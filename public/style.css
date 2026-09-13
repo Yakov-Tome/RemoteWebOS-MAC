@@ -1,0 +1,385 @@
+:root {
+  --bg: #0a0b0d;
+  --body-hi: #3a3f47;
+  --body-lo: #16181c;
+  --key: #23262c;
+  --key-hi: #2e323a;
+  --text: #e9ecf1;
+  --muted: #9aa3af;
+  --legend: #c8ced8;
+  --red: #d64141;
+  --ok: #4ec27b;
+  --warn: #e8b04c;
+  --err: #e05656;
+  --ring: rgba(255, 255, 255, 0.09);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background:
+    radial-gradient(120% 60% at 50% -10%, #1b2129 0%, transparent 60%),
+    var(--bg);
+  color: var(--text);
+  font: 14px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.sprite { display: none; }
+
+svg { width: 20px; height: 20px; fill: none; }
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 12px 26px;
+}
+
+/* Status reads like the remote's indicator LED rather than a browser chrome bar. */
+.led-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--muted);
+  user-select: none;
+}
+.led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--muted);
+  box-shadow: 0 0 0 0 transparent;
+}
+.led.led-ok   { background: var(--ok);   box-shadow: 0 0 8px 1px rgba(78, 194, 123, .55); }
+.led.led-warn { background: var(--warn); box-shadow: 0 0 8px 1px rgba(232, 176, 76, .45); }
+.led.led-err  { background: var(--err);  box-shadow: 0 0 8px 1px rgba(224, 86, 86, .45); }
+
+/* ---------- remote body ---------- */
+
+.remote {
+  width: 272px;
+  padding: 16px 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-radius: 74px / 96px;
+  background: linear-gradient(170deg, #32363d 0%, #24272c 26%, #1d2024 68%, #181a1e 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .16),
+    inset 0 0 0 1px rgba(255, 255, 255, .05),
+    inset 0 -2px 6px rgba(0, 0, 0, .5),
+    0 26px 50px -18px rgba(0, 0, 0, .9),
+    0 6px 18px rgba(0, 0, 0, .5);
+}
+
+.brand {
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: .34em;
+  font-weight: 600;
+  color: rgba(255, 255, 255, .34);
+  margin-bottom: 2px;
+}
+
+/* ---------- keys ---------- */
+
+.key {
+  appearance: none;
+  border: 0;
+  color: var(--legend);
+  background: linear-gradient(180deg, var(--key-hi), var(--key));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .10),
+    0 1px 2px rgba(0, 0, 0, .6);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: inherit;
+  font-weight: 500;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background .12s ease, transform .05s ease, box-shadow .12s ease;
+}
+.key:hover { background: linear-gradient(180deg, #363b43, #292d34); }
+.key:active, .key.pressed {
+  transform: translateY(1px);
+  background: linear-gradient(180deg, #1e2126, #262a31);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, .6);
+}
+.key:focus-visible, .seg:focus-visible, .ok:focus-visible {
+  outline: 2px solid #5b9cff;
+  outline-offset: 2px;
+}
+
+.key.round { width: 44px; height: 44px; border-radius: 50%; }
+.key.round.sm { width: 36px; height: 36px; }
+.key.round.sm svg { width: 16px; height: 16px; }
+
+.key.power {
+  color: #fff;
+  background: linear-gradient(180deg, #e05050, #b82f2f);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .25), 0 2px 6px rgba(190, 40, 40, .35);
+}
+.key.power:hover { background: linear-gradient(180deg, #ea5a5a, #c43636); }
+.key.power.on-state { background: linear-gradient(180deg, #4ec27b, #2f9457); box-shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 2px 8px rgba(60, 170, 110, .35); }
+
+.key.mute.is-muted { color: #fff; background: linear-gradient(180deg, #5b9cff, #3567c9); }
+
+.top-row, .nav-row, .media-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.nav-row { justify-content: center; gap: 16px; }
+.nav-row.thin { gap: 8px; }
+.media-row { justify-content: center; gap: 7px; }
+
+.key.pill {
+  flex: 1;
+  height: 26px;
+  border-radius: 13px;
+  font-size: 10.5px;
+  letter-spacing: .06em;
+  color: var(--muted);
+}
+
+/* ---------- numpad ---------- */
+
+.numpad {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px 10px;
+  padding: 0 2px;
+}
+.key.num {
+  height: 32px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+.key.num.small { font-size: 10.5px; font-weight: 500; color: var(--muted); }
+
+/* ---------- volume / channel rockers ---------- */
+
+.rockers {
+  display: grid;
+  grid-template-columns: 56px 1fr 56px;
+  align-items: center;
+  gap: 8px;
+}
+.rocker {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 28px;
+  background: linear-gradient(180deg, #2c3037, #1b1e22);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .10), inset 0 0 0 1px rgba(0, 0, 0, .35);
+  overflow: hidden;
+}
+.rocker .key {
+  height: 40px;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.rocker .key:hover { background: rgba(255, 255, 255, .06); }
+.rocker .key:active, .rocker .key.pressed { background: rgba(0, 0, 0, .35); transform: none; }
+.rock-label {
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-align: center;
+  color: var(--muted);
+  padding: 1px 0;
+  border-top: 1px solid rgba(0, 0, 0, .35);
+  border-bottom: 1px solid rgba(0, 0, 0, .35);
+  background: rgba(0, 0, 0, .18);
+}
+.mid-keys { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+
+/* ---------- magic-remote wheel ---------- */
+
+.wheel-wrap { display: flex; justify-content: center; padding: 2px 0 4px; }
+.wheel {
+  position: relative;
+  width: 196px;
+  height: 196px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 32%, #33373f 0%, #262a30 52%, #1c1f23 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .14),
+    inset 0 0 0 1px rgba(0, 0, 0, .45),
+    0 3px 10px rgba(0, 0, 0, .55);
+}
+/* Four sectors, split like the hardware ring: the clip-path turns each full-size
+   button into a quadrant, so hover/press highlights read as pie slices. */
+.seg {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--legend);
+  cursor: pointer;
+  display: flex;
+  -webkit-tap-highlight-color: transparent;
+  transition: background .12s ease;
+}
+.seg:hover { background: rgba(255, 255, 255, .07); }
+.seg:active, .seg.pressed { background: rgba(0, 0, 0, .38); }
+.seg svg { width: 22px; height: 22px; }
+
+.seg-up    { clip-path: polygon(50% 50%, 0 0, 100% 0);        align-items: flex-start; justify-content: center; padding-top: 14px; }
+.seg-right { clip-path: polygon(50% 50%, 100% 0, 100% 100%);  align-items: center; justify-content: flex-end; padding-right: 14px; }
+.seg-down  { clip-path: polygon(50% 50%, 100% 100%, 0 100%);  align-items: flex-end; justify-content: center; padding-bottom: 14px; }
+.seg-left  { clip-path: polygon(50% 50%, 0 100%, 0 0);        align-items: center; justify-content: flex-start; padding-left: 14px; }
+
+.seg-right svg { transform: rotate(90deg); }
+.seg-down svg  { transform: rotate(180deg); }
+.seg-left svg  { transform: rotate(-90deg); }
+
+.ok {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+  font: 600 13px/1 inherit;
+  letter-spacing: .08em;
+  color: var(--text);
+  background: linear-gradient(180deg, #3b4048 0%, #2a2e35 60%, #22252a 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .18),
+    0 2px 6px rgba(0, 0, 0, .6),
+    0 0 0 1px rgba(0, 0, 0, .4);
+  -webkit-tap-highlight-color: transparent;
+}
+.ok:hover { background: linear-gradient(180deg, #42474f, #2e323a); }
+.ok:active, .ok.pressed { transform: translate(-50%, -50%) translateY(1px); box-shadow: inset 0 2px 6px rgba(0, 0, 0, .6); }
+
+/* ---------- app hotkeys ---------- */
+
+.hotkeys { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.hotkey {
+  height: 30px;
+  border-radius: 15px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: #fff;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18), 0 1px 3px rgba(0, 0, 0, .5);
+  transition: filter .12s ease, transform .05s ease;
+}
+.hotkey:hover { filter: brightness(1.12); }
+.hotkey:active, .hotkey.pressed { transform: translateY(1px); filter: brightness(.9); }
+.hotkey.netflix { background: linear-gradient(180deg, #e5262f, #b3121a); }
+.hotkey.youtube { background: linear-gradient(180deg, #f0242b, #c0141a); }
+.hotkey.disney  { background: linear-gradient(180deg, #2b46a8, #16266b); }
+.hotkey.prime   { background: linear-gradient(180deg, #15a3d6, #0a7aa3); }
+.hotkey.generic { background: linear-gradient(180deg, #3a3f48, #262a31); color: var(--legend); }
+
+/* ---------- sheet ---------- */
+
+.sheet {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: rgba(0, 0, 0, .55);
+  backdrop-filter: blur(3px);
+}
+.sheet[hidden] { display: none; }
+.sheet-card {
+  width: 100%;
+  max-width: 420px;
+  max-height: 78vh;
+  display: flex;
+  flex-direction: column;
+  background: #16181c;
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-bottom: 0;
+  border-radius: 18px 18px 0 0;
+  box-shadow: 0 -12px 40px rgba(0, 0, 0, .6);
+}
+.sheet-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, .07);
+}
+.sheet-head h2 { margin: 0; font-size: 14px; font-weight: 600; }
+.sheet-body { padding: 12px 14px 18px; overflow-y: auto; }
+
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(84px, 1fr));
+  gap: 8px;
+}
+.tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 6px;
+  background: #1d2025;
+  border: 1px solid rgba(255, 255, 255, .06);
+  border-radius: 12px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 11px;
+  color: var(--text);
+}
+.tile:hover { background: #24282e; }
+.tile:active { transform: translateY(1px); }
+.tile img { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; background: #000; }
+.tile.off { opacity: .45; }
+/* plaintext keeps Latin titles like "Disney+" from flipping inside the RTL sheet. */
+.tile span { line-height: 1.25; overflow-wrap: anywhere; unicode-bidi: plaintext; }
+
+.composer { display: flex; gap: 8px; }
+.composer input {
+  flex: 1;
+  background: #1d2025;
+  border: 1px solid rgba(255, 255, 255, .08);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 10px;
+  font: inherit;
+}
+.composer button {
+  padding: 0 16px;
+  border-radius: 10px;
+  border: 0;
+  background: #3567c9;
+  color: #fff;
+  font: 600 13px/1 inherit;
+  cursor: pointer;
+}
+.composer button:hover { background: #3f74dd; }
+.hint { margin: 10px 2px 0; font-size: 11.5px; color: var(--muted); }
+.empty { color: var(--muted); font-size: 12.5px; padding: 6px 2px; }
+
+/* Command failures glow on the key that caused them. */
+.flash-err { box-shadow: inset 0 0 0 1.5px var(--err), 0 0 10px rgba(224, 86, 86, .35) !important; }

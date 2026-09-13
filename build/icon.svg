@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1e2530"/>
+      <stop offset="1" stop-color="#0b0d10"/>
+    </linearGradient>
+    <linearGradient id="remote" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eef0f3"/>
+      <stop offset="1" stop-color="#b8bcc4"/>
+    </linearGradient>
+    <linearGradient id="ok" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6aa1ff"/>
+      <stop offset="1" stop-color="#3d7ce0"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-10%" width="140%" height="120%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="14"/>
+      <feOffset dx="0" dy="10" result="offsetblur"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.35"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="1024" height="1024" rx="220" ry="220" fill="url(#bg)"/>
+
+  <g filter="url(#shadow)">
+    <rect x="332" y="132" width="360" height="760" rx="180" ry="180" fill="url(#remote)"/>
+  </g>
+
+  <circle cx="512" cy="256" r="42" fill="#e05656"/>
+  <circle cx="512" cy="256" r="42" fill="none" stroke="#a83c3c" stroke-width="3" opacity="0.4"/>
+
+  <line x1="380" y1="352" x2="644" y2="352" stroke="#c8ccd2" stroke-width="3"/>
+
+  <g fill="#3a4048">
+    <path d="M 512 420 L 566 484 L 458 484 Z"/>
+    <path d="M 512 720 L 458 656 L 566 656 Z"/>
+    <path d="M 372 570 L 436 516 L 436 624 Z"/>
+    <path d="M 652 570 L 588 516 L 588 624 Z"/>
+  </g>
+
+  <circle cx="512" cy="570" r="82" fill="url(#ok)"/>
+  <circle cx="512" cy="570" r="82" fill="none" stroke="#8fbaff" stroke-width="3" opacity="0.5"/>
+
+  <line x1="380" y1="788" x2="644" y2="788" stroke="#c8ccd2" stroke-width="3"/>
+
+  <g fill="#3a4048">
+    <rect x="416" y="820" width="70" height="22" rx="11"/>
+    <rect x="538" y="820" width="70" height="22" rx="11"/>
+  </g>
+</svg>

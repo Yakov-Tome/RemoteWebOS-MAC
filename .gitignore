@@ -1,0 +1,9 @@
+node_modules/
+client-key.json*
+config.json
+npm-debug.log*
+*.log
+.DS_Store
+dist/
+build/icon.iconset/
+build/icon-1024.png

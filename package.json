@@ -1,0 +1,26 @@
+{
+  "name": "remotec",
+  "productName": "RemoteC",
+  "version": "1.1.0",
+  "description": "LG webOS TV remote for the home network, styled like the Magic Remote",
+  "repository": "https://github.com/Yakov-Tome/RemoteWebOS-MAC",
+  "license": "MIT",
+  "main": "electron-main.js",
+  "scripts": {
+    "start": "electron .",
+    "server": "node server.js",
+    "build:mac": "electron-builder --mac --config electron-builder.json"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "lgtv2": "^1.4.4",
+    "wake_on_lan": "^1.0.0"
+  },
+  "devDependencies": {
+    "electron": "^32.2.5",
+    "electron-builder": "^25.1.8"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
