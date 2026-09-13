@@ -1,6 +1,6 @@
 const path = require('path');
 const fs = require('fs');
-const { app, BrowserWindow, Menu, dialog, shell, nativeImage } = require('electron');
+const { app, BrowserWindow, Menu, dialog, shell, nativeImage, ipcMain } = require('electron');
 const { startServer } = require('./server');
 
 // Must run before the app is ready, otherwise userData is already resolved.
@@ -14,6 +14,12 @@ let configPath = null;
 const BUNDLED_CONFIG = path.join(__dirname, 'config.json');
 const EXAMPLE_CONFIG = path.join(__dirname, 'config.example.json');
 const ICON_PATH = path.join(__dirname, 'build', 'icon.png');
+const PRELOAD_PATH = path.join(__dirname, 'preload.js');
+
+// Full remote vs. the widget-sized compact remote.
+const FULL_SIZE = { width: 380, height: 940, minWidth: 340, minHeight: 620 };
+const COMPACT_SIZE = { width: 300, height: 256 };
+let fullBounds = null;
 
 // __dirname points inside app.asar in a packaged build and is read-only, so all
 // mutable state (pairing key, edited config) lives in userData instead.
@@ -48,6 +54,12 @@ function buildMenu(url) {
       label: 'Remote',
       submenu: [
         {
+          label: 'Compact mode',
+          accelerator: 'CmdOrCtrl+Shift+C',
+          click: () => mainWindow && mainWindow.webContents.send('remote:toggle-compact'),
+        },
+        { type: 'separator' },
+        {
           label: 'Open in browser',
           click: () => url && shell.openExternal(url),
         },
@@ -68,22 +80,64 @@ function buildMenu(url) {
 
 function createWindow(url) {
   mainWindow = new BrowserWindow({
-    width: 380,
-    height: 940,
-    minWidth: 340,
-    minHeight: 620,
+    width: FULL_SIZE.width,
+    height: FULL_SIZE.height,
+    minWidth: FULL_SIZE.minWidth,
+    minHeight: FULL_SIZE.minHeight,
     title: 'RemoteC',
     backgroundColor: '#0b0d10',
     titleBarStyle: 'hiddenInset',
     icon: fs.existsSync(ICON_PATH) ? ICON_PATH : undefined,
     webPreferences: {
+      preload: PRELOAD_PATH,
       contextIsolation: true,
       nodeIntegration: false,
     },
   });
   mainWindow.loadURL(url);
-  mainWindow.on('closed', () => { mainWindow = null; });
+  mainWindow.on('closed', () => { mainWindow = null; fullBounds = null; });
 }
+
+// Compact mode shrinks the window to widget size and floats it above other apps,
+// so it behaves like the desktop widgets it is modelled on. The full-size bounds
+// are remembered so expanding puts the window back where the user had it.
+function applyCompact(on) {
+  if (!mainWindow) return { compact: false };
+  const isCompact = mainWindow.isAlwaysOnTop() && mainWindow.getBounds().width <= COMPACT_SIZE.width + 4;
+  if (on === isCompact) return { compact: on };
+
+  if (mainWindow.isFullScreen()) mainWindow.setFullScreen(false);
+  if (mainWindow.isMaximized()) mainWindow.unmaximize();
+
+  if (on) {
+    fullBounds = mainWindow.getBounds();
+    // Minimums must drop first, otherwise the resize is clamped to the full-remote size.
+    mainWindow.setMinimumSize(COMPACT_SIZE.width, COMPACT_SIZE.height);
+    const { x, y, width } = fullBounds;
+    mainWindow.setBounds({
+      // Keep the right edge anchored: the widget stays where the remote's edge was.
+      x: Math.round(x + width - COMPACT_SIZE.width),
+      y,
+      width: COMPACT_SIZE.width,
+      height: COMPACT_SIZE.height,
+    });
+    mainWindow.setAlwaysOnTop(true, 'floating');
+  } else {
+    mainWindow.setAlwaysOnTop(false);
+    mainWindow.setMinimumSize(FULL_SIZE.minWidth, FULL_SIZE.minHeight);
+    const target = fullBounds || { width: FULL_SIZE.width, height: FULL_SIZE.height };
+    const { x, y, width } = mainWindow.getBounds();
+    mainWindow.setBounds({
+      x: fullBounds ? target.x : Math.round(x + width - FULL_SIZE.width),
+      y: fullBounds ? target.y : y,
+      width: target.width,
+      height: target.height,
+    });
+  }
+  return { compact: on };
+}
+
+ipcMain.handle('remote:compact', (event, on) => applyCompact(!!on));
 
 async function boot() {
   try {

@@ -7,6 +7,7 @@
   },
   "files": [
     "electron-main.js",
+    "preload.js",
     "server.js",
     "tv-client.js",
     "config.json",

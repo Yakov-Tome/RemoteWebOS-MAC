@@ -54,6 +54,12 @@
       <rect x="3.5" y="13.5" width="7" height="7" rx="1.6" fill="currentColor"/>
       <rect x="13.5" y="13.5" width="7" height="7" rx="1.6" fill="currentColor"/>
     </symbol>
+    <symbol id="i-shrink" viewBox="0 0 24 24">
+      <path d="M10 4v6H4M14 20v-6h6" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24">
+      <path d="M4 10V4h6M20 14v6h-6" stroke="currentColor" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
     <symbol id="i-close" viewBox="0 0 24 24">
       <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
     </symbol>
@@ -61,8 +67,11 @@
 
   <div class="stage">
     <div class="led-bar">
-      <span id="led" class="led"></span>
-      <span id="status">מתחבר...</span>
+      <span class="led"></span>
+      <span data-status>מתחבר...</span>
+      <button class="chip" data-compact="1" title="מצב קומפקטי (⌘⇧C)" aria-label="מצב קומפקטי">
+        <svg><use href="#i-shrink"/></svg>
+      </button>
     </div>
 
     <!-- The remote body mirrors the LG Magic Remote, so it stays LTR like the hardware. -->
@@ -172,6 +181,75 @@
       </div>
 
       <div id="hotkeys" class="hotkeys"></div>
+    </div>
+
+    <!-- Compact mode: the same remote boiled down to what you reach for without
+         looking, sized like a desktop widget. Buttons reuse data-cmd, so the
+         press/hold handlers and mute state apply to both layouts. -->
+    <div class="widget" dir="ltr">
+      <div class="w-head">
+        <span class="led"></span>
+        <span class="w-status" data-status data-short></span>
+        <button class="w-chip" data-compact="0" title="שלט מלא (⌘⇧C)" aria-label="חזרה לשלט המלא">
+          <svg><use href="#i-expand"/></svg>
+        </button>
+      </div>
+
+      <div class="w-main">
+        <div class="rocker w-rocker">
+          <button class="key rock-up" data-cmd="POST /api/volume/up" data-repeat="1" aria-label="עוצמה למעלה">
+            <svg><use href="#i-plus"/></svg>
+          </button>
+          <span class="rock-label">VOL</span>
+          <button class="key rock-down" data-cmd="POST /api/volume/down" data-repeat="1" aria-label="עוצמה למטה">
+            <svg><use href="#i-minus"/></svg>
+          </button>
+        </div>
+
+        <div class="wheel w-wheel">
+          <button class="seg seg-up" data-cmd="POST /api/button/UP" data-repeat="1" aria-label="למעלה">
+            <svg><use href="#i-up"/></svg>
+          </button>
+          <button class="seg seg-right" data-cmd="POST /api/button/RIGHT" data-repeat="1" aria-label="ימינה">
+            <svg><use href="#i-up"/></svg>
+          </button>
+          <button class="seg seg-down" data-cmd="POST /api/button/DOWN" data-repeat="1" aria-label="למטה">
+            <svg><use href="#i-up"/></svg>
+          </button>
+          <button class="seg seg-left" data-cmd="POST /api/button/LEFT" data-repeat="1" aria-label="שמאלה">
+            <svg><use href="#i-up"/></svg>
+          </button>
+          <button class="ok" data-cmd="POST /api/button/ENTER" aria-label="אישור">OK</button>
+        </div>
+
+        <div class="rocker w-rocker">
+          <button class="key rock-up" data-cmd="POST /api/channel/up" data-repeat="1" aria-label="ערוץ למעלה">
+            <svg><use href="#i-plus"/></svg>
+          </button>
+          <span class="rock-label">CH</span>
+          <button class="key rock-down" data-cmd="POST /api/channel/down" data-repeat="1" aria-label="ערוץ למטה">
+            <svg><use href="#i-minus"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="w-row">
+        <button class="key round sm power" title="הדלקה / כיבוי" aria-label="הדלקה או כיבוי">
+          <svg><use href="#i-power"/></svg>
+        </button>
+        <button class="key round sm mute" data-cmd="POST /api/mute/toggle" title="השתקה" aria-label="השתקה">
+          <svg><use href="#i-mute"/></svg>
+        </button>
+        <button class="key round sm" data-cmd="POST /api/media/pause" title="נגן / השהה" aria-label="נגן או השהה">
+          <svg><use href="#i-pause"/></svg>
+        </button>
+        <button class="key round sm" data-cmd="POST /api/button/BACK" title="חזרה" aria-label="חזרה">
+          <svg><use href="#i-back"/></svg>
+        </button>
+        <button class="key round sm" data-cmd="POST /api/button/HOME" title="בית" aria-label="בית">
+          <svg><use href="#i-home"/></svg>
+        </button>
+      </div>
     </div>
   </div>
 

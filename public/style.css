@@ -383,3 +383,124 @@ svg { width: 20px; height: 20px; fill: none; }
 
 /* Command failures glow on the key that caused them. */
 .flash-err { box-shadow: inset 0 0 0 1.5px var(--err), 0 0 10px rgba(224, 86, 86, .35) !important; }
+
+/* ---------- compact (widget) mode ---------- */
+
+/* Small ghost button that lives in the status bar next to the LED. */
+.chip {
+  appearance: none;
+  border: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  background: rgba(255, 255, 255, .06);
+  cursor: pointer;
+  padding: 0;
+}
+.chip:hover { background: rgba(255, 255, 255, .12); color: var(--text); }
+.chip svg { width: 13px; height: 13px; }
+
+.widget { display: none; }
+
+body.is-compact .stage {
+  min-height: 100vh;
+  justify-content: center;
+  padding: 0;
+  gap: 0;
+}
+body.is-compact .led-bar,
+body.is-compact .remote { display: none; }
+body.is-compact .widget { display: flex; }
+
+.widget {
+  width: 276px;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px 12px;
+  border-radius: 22px;
+  background: linear-gradient(165deg, #2c3037 0%, #22252a 45%, #1a1c20 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .14),
+    inset 0 0 0 1px rgba(255, 255, 255, .05),
+    0 18px 36px -16px rgba(0, 0, 0, .85);
+}
+
+/* The header doubles as the drag handle; macOS traffic lights sit over its left edge. */
+.w-head {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  height: 22px;
+  padding-left: 66px;
+  -webkit-app-region: drag;
+}
+.w-head .led { flex: none; }
+.w-head button { -webkit-app-region: no-drag; }
+
+.w-status {
+  flex: 1;
+  min-width: 0;
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  unicode-bidi: plaintext;
+}
+
+.w-chip {
+  appearance: none;
+  border: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  background: rgba(255, 255, 255, .07);
+  cursor: pointer;
+  padding: 0;
+  flex: none;
+}
+.w-chip:hover { background: rgba(255, 255, 255, .14); color: var(--text); }
+.w-chip svg { width: 13px; height: 13px; }
+
+.w-main {
+  display: grid;
+  grid-template-columns: 46px 1fr 46px;
+  align-items: center;
+  gap: 9px;
+}
+
+.w-rocker { height: 140px; border-radius: 23px; }
+.w-rocker .key { height: auto; flex: 1; }
+.w-rocker svg { width: 17px; height: 17px; }
+
+/* Same wheel, scaled down: the quadrant clip-paths are relative, only the
+   icon insets need retuning at this size. */
+.w-wheel {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto;
+}
+.w-wheel .seg svg { width: 16px; height: 16px; }
+.w-wheel .seg-up    { padding-top: 9px; }
+.w-wheel .seg-right { padding-right: 9px; }
+.w-wheel .seg-down  { padding-bottom: 9px; }
+.w-wheel .seg-left  { padding-left: 9px; }
+.w-wheel .ok {
+  width: 58px;
+  height: 58px;
+  font-size: 11px;
+}
+
+.w-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
