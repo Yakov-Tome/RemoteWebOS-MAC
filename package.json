@@ -1,7 +1,7 @@
 {
   "name": "remotec",
   "productName": "RemoteC",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "LG webOS TV remote for the home network, styled like the Magic Remote",
   "repository": "https://github.com/Yakov-Tome/RemoteWebOS-MAC",
   "license": "MIT",
