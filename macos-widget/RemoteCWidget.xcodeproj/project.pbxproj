@@ -1,0 +1,432 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		REM07E00000000000000000F /* RemoteCWidgetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = REM07E000000000000000001 /* RemoteCWidgetApp.swift */; };
+		REM07E000000000000000010 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = REM07E000000000000000002 /* ContentView.swift */; };
+		REM07E000000000000000011 /* RemoteServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = REM07E000000000000000003 /* RemoteServer.swift */; };
+		REM07E000000000000000012 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = REM07E000000000000000004 /* Theme.swift */; };
+		REM07E000000000000000013 /* RemoteWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = REM07E000000000000000005 /* RemoteWidgetBundle.swift */; };
+		REM07E000000000000000014 /* RemoteWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = REM07E000000000000000006 /* RemoteWidget.swift */; };
+		REM07E000000000000000015 /* RemoteWidgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = REM07E000000000000000007 /* RemoteWidgetView.swift */; };
+		REM07E000000000000000016 /* RemoteIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = REM07E000000000000000008 /* RemoteIntents.swift */; };
+		REM07E000000000000000017 /* RemoteServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = REM07E000000000000000003 /* RemoteServer.swift */; };
+		REM07E000000000000000018 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = REM07E000000000000000004 /* Theme.swift */; };
+		REM07E000000000000000019 /* RemoteWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = REM07E00000000000000000E /* RemoteWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		REM07E000000000000000028 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = REM07E00000000000000002A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = REM07E000000000000000027;
+			remoteInfo = RemoteWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		REM07E000000000000000022 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				REM07E000000000000000019 /* RemoteWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		REM07E000000000000000001 /* RemoteCWidgetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCWidgetApp.swift; sourceTree = "<group>"; };
+		REM07E000000000000000002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		REM07E000000000000000003 /* RemoteServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteServer.swift; sourceTree = "<group>"; };
+		REM07E000000000000000004 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		REM07E000000000000000005 /* RemoteWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteWidgetBundle.swift; sourceTree = "<group>"; };
+		REM07E000000000000000006 /* RemoteWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteWidget.swift; sourceTree = "<group>"; };
+		REM07E000000000000000007 /* RemoteWidgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteWidgetView.swift; sourceTree = "<group>"; };
+		REM07E000000000000000008 /* RemoteIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteIntents.swift; sourceTree = "<group>"; };
+		REM07E000000000000000009 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		REM07E00000000000000000A /* RemoteCWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RemoteCWidget.entitlements; sourceTree = "<group>"; };
+		REM07E00000000000000000B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		REM07E00000000000000000C /* RemoteWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RemoteWidgetExtension.entitlements; sourceTree = "<group>"; };
+		REM07E00000000000000000D /* RemoteCWidget.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RemoteCWidget.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		REM07E00000000000000000E /* RemoteWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RemoteWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		REM07E000000000000000020 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		REM07E000000000000000024 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		REM07E00000000000000001A /* RemoteCWidget */ = {
+			isa = PBXGroup;
+			children = (
+				REM07E00000000000000001B,
+				REM07E00000000000000001C,
+				REM07E00000000000000001D,
+				REM07E00000000000000001E,
+			);
+			name = RemoteCWidget;
+			sourceTree = "<group>";
+		};
+		REM07E00000000000000001B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				REM07E000000000000000001,
+				REM07E000000000000000002,
+				REM07E000000000000000009,
+				REM07E00000000000000000A,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		REM07E00000000000000001C /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				REM07E000000000000000005,
+				REM07E000000000000000006,
+				REM07E000000000000000007,
+				REM07E000000000000000008,
+				REM07E00000000000000000B,
+				REM07E00000000000000000C,
+			);
+			path = Widget;
+			sourceTree = "<group>";
+		};
+		REM07E00000000000000001D /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				REM07E000000000000000003,
+				REM07E000000000000000004,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		REM07E00000000000000001E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				REM07E00000000000000000D,
+				REM07E00000000000000000E,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		REM07E000000000000000026 /* RemoteCWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = REM07E000000000000000032 /* Build configuration list for PBXNativeTarget "RemoteCWidget" */;
+			buildPhases = (
+				REM07E00000000000000001F /* Sources */,
+				REM07E000000000000000020 /* Frameworks */,
+				REM07E000000000000000021 /* Resources */,
+				REM07E000000000000000022 /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				REM07E000000000000000029 /* PBXTargetDependency */,
+			);
+			name = RemoteCWidget;
+			productName = RemoteCWidget;
+			productReference = REM07E00000000000000000D /* RemoteCWidget.app */;
+			productType = "com.apple.product-type.application";
+		};
+		REM07E000000000000000027 /* RemoteWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = REM07E000000000000000033 /* Build configuration list for PBXNativeTarget "RemoteWidgetExtension" */;
+			buildPhases = (
+				REM07E000000000000000023 /* Sources */,
+				REM07E000000000000000024 /* Frameworks */,
+				REM07E000000000000000025 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RemoteWidgetExtension;
+			productName = RemoteWidgetExtension;
+			productReference = REM07E00000000000000000E /* RemoteWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		REM07E00000000000000002A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					REM07E000000000000000026 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					REM07E000000000000000027 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+				};
+			};
+			buildConfigurationList = REM07E000000000000000031 /* Build configuration list for PBXProject "RemoteCWidget" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = he;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				he,
+				en,
+				Base,
+			);
+			mainGroup = REM07E00000000000000001A;
+			productRefGroup = REM07E00000000000000001E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				REM07E000000000000000026 /* RemoteCWidget */,
+				REM07E000000000000000027 /* RemoteWidgetExtension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		REM07E000000000000000021 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		REM07E000000000000000025 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		REM07E00000000000000001F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				REM07E00000000000000000F /* RemoteCWidgetApp.swift in Sources */,
+				REM07E000000000000000010 /* ContentView.swift in Sources */,
+				REM07E000000000000000011 /* RemoteServer.swift in Sources */,
+				REM07E000000000000000012 /* Theme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		REM07E000000000000000023 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				REM07E000000000000000013 /* RemoteWidgetBundle.swift in Sources */,
+				REM07E000000000000000014 /* RemoteWidget.swift in Sources */,
+				REM07E000000000000000015 /* RemoteWidgetView.swift in Sources */,
+				REM07E000000000000000016 /* RemoteIntents.swift in Sources */,
+				REM07E000000000000000017 /* RemoteServer.swift in Sources */,
+				REM07E000000000000000018 /* Theme.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		REM07E000000000000000029 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = REM07E000000000000000027 /* RemoteWidgetExtension */;
+			targetProxy = REM07E000000000000000028 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		REM07E00000000000000002B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_TESTABILITY = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		REM07E00000000000000002C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_OPTIMIZATION_LEVEL = s;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		REM07E00000000000000002D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = App/RemoteCWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.remotec.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		REM07E00000000000000002E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = App/RemoteCWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = App/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.remotec.widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+		REM07E00000000000000002F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Widget/RemoteWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.remotec.widget.RemoteWidgetExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Debug;
+		};
+		REM07E000000000000000030 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Widget/RemoteWidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Widget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
+				MARKETING_VERSION = 1.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.remotec.widget.RemoteWidgetExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		REM07E000000000000000031 /* Build configuration list for PBXProject "RemoteCWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				REM07E00000000000000002B /* Debug */,
+				REM07E00000000000000002C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		REM07E000000000000000032 /* Build configuration list for PBXNativeTarget "RemoteCWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				REM07E00000000000000002D /* Debug */,
+				REM07E00000000000000002E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		REM07E000000000000000033 /* Build configuration list for PBXNativeTarget "RemoteWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				REM07E00000000000000002F /* Debug */,
+				REM07E000000000000000030 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = REM07E00000000000000002A /* Project object */;
+}

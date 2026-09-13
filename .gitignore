@@ -7,3 +7,8 @@ npm-debug.log*
 dist/
 build/icon.iconset/
 build/icon-1024.png
+
+# Xcode
+macos-widget/**/xcuserdata/
+macos-widget/**/*.xcworkspace/xcuserdata/
+macos-widget/**/DerivedData/

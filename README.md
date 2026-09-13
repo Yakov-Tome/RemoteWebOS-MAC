@@ -74,6 +74,12 @@ cp client-key.json ~/Library/Application\ Support/RemoteC/client-key.json
 | `h` | בית |
 | `0`–`9` | מקשי ספרות |
 
+## ווידג׳ט macOS
+`macos-widget/` מכיל פרויקט Xcode לווידג׳ט WidgetKit אמיתי — כזה שיושב על שולחן העבודה
+ובמרכז ההתראות, עם כפתורים לחיצים (App Intents, דורש macOS 14+). הווידג׳ט הוא לקוח של
+אותו שרת מקומי, ולכן RemoteC חייבת לרוץ כדי שהכפתורים יעבדו.
+בנייה דורשת Xcode — ראה `macos-widget/README.md`.
+
 ## API
 | Endpoint | תיאור |
 | --- | --- |
